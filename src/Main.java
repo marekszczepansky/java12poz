@@ -15,28 +15,30 @@ public class Main {
     public static void main(String[] args) {
 
         bubbleSort(test2, STRING_LENGTH_COMPARATOR);
-        quickSort(test1);
+        quickSort(test);
         System.out.println(Arrays.toString(test1));
         System.out.println(Arrays.toString(test2));
     }
 
-    public static int[] quickSort(int[] array) {
+    public static <T extends Comparable> T[] quickSort(T[] array) {
         return quickSort(array, 0, array.length - 1);
     }
 
-    private static int[] quickSort(int[] array, int left, int right) {
-        int i, j, pivot, temp;
+    private static <T extends Comparable> T[] quickSort(T[] array, int left, int right) {
+        int i, j;
+        T pivot, temp;
 
         i = (left + right) / 2;
         pivot = array[i];
         array[i] = array[right];
-        for (j = i = left; i < right; i++)
-            if (array[i] < pivot) {
+        for (j = i = left; i < right; i++) {
+            if (array[i].compareTo(pivot) < 0) {
                 temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
                 j++;
             }
+        }
         array[right] = array[j];
         array[j] = pivot;
         if (left < j - 1) quickSort(array, left, j - 1);
@@ -44,14 +46,15 @@ public class Main {
         return array;
     }
 
-    public static int[] insertionSort(int[] input) {
+    public static <T extends Comparable> T[] insertionSort(T[] input) {
 
-        int x, i, j = input.length - 2;
+        T x;
+        int i, j = input.length - 2;
 
         while (j >= 0) {
             x = input[j];
             i = j + 1;
-            while ((i < input.length) && (x > input[i])) {
+            while ((i < input.length)  && (x.compareTo(input[i]) > 0)) {
                 input[i - 1] = input[i];
                 i++;
             }
@@ -60,6 +63,7 @@ public class Main {
         }
         return input;
     }
+
 
     public static <T extends Comparable> void bubbleSort(T[] x) {
         int n = x.length;
@@ -73,6 +77,7 @@ public class Main {
             }
         }
     }
+
 
     public static <T extends Comparable> void bubbleSort(T[] x, Comparator<T> comparator) {
         int n = x.length;
