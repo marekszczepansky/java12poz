@@ -1,21 +1,110 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Optional;
 
 public class Main {
 
-    private static Integer[] test = {6, 66, 3, 1, 2, 4};
-    private static String[] test2 = {"Ala", "Ola", "Ela"};
+    private static Integer[] test = {1, 11, 2, 22, 99, 9, 88, 8};
+    private static int[] test1 = {1, 11, 2, 22, 99, 9, 88, 8};
+    private static String[] test2 = {"Ala", "ma", "kota"};
+
+    public static final Comparator<String> STRING_LENGTH_COMPARATOR = (o1, o2) -> o1.length() - o2.length();
 
     public static void main(String[] args) {
-        Integer element = 3;
 
-        Optional<Integer> el1 = findElement(test, element);
-        element++;
-        Optional<Integer> el2 = findElement(test, element);
-
-        el1.ifPresent( elem -> System.out.println(elem));
-        el2.ifPresent( elem -> System.out.println(elem));
+        bubbleSort(test2, STRING_LENGTH_COMPARATOR);
+        quickSort(test1);
+        System.out.println(Arrays.toString(test1));
+        System.out.println(Arrays.toString(test2));
     }
 
+    public static int[] quickSort(int[] array) {
+        return quickSort(array, 0, array.length - 1);
+    }
+
+    private static int[] quickSort(int[] array, int left, int right) {
+        int i, j, pivot, temp;
+
+        i = (left + right) / 2;
+        pivot = array[i];
+        array[i] = array[right];
+        for (j = i = left; i < right; i++)
+            if (array[i] < pivot) {
+                temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                j++;
+            }
+        array[right] = array[j];
+        array[j] = pivot;
+        if (left < j - 1) quickSort(array, left, j - 1);
+        if (j + 1 < right) quickSort(array, j + 1, right);
+        return array;
+    }
+
+    public static int[] insertionSort(int[] input) {
+
+        int x, i, j = input.length - 2;
+
+        while (j >= 0) {
+            x = input[j];
+            i = j + 1;
+            while ((i < input.length) && (x > input[i])) {
+                input[i - 1] = input[i];
+                i++;
+            }
+            input[i - 1] = x;
+            j--;
+        }
+        return input;
+    }
+
+    public static <T extends Comparable> void bubbleSort(T[] x) {
+        int n = x.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (x[j].compareTo(x[j + 1]) > 0) {
+                    T temp = x[j];
+                    x[j] = x[j + 1];
+                    x[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public static <T extends Comparable> void bubbleSort(T[] x, Comparator<T> comparator) {
+        int n = x.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (comparator.compare(x[j], x[j + 1]) > 0) {
+                    T temp = x[j];
+                    x[j] = x[j + 1];
+                    x[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public static <T> T[] moveLast2Head(T[] in) {
+        T temp = in[in.length - 1];
+        for (int i = 1; i < in.length; i++) {
+            in[in.length - i] = in[in.length - i - 1];
+        }
+        in[0] = temp;
+        return in;
+    }
+
+    public static String printDateTime(String givenDate) {
+        DateTimeFormatter givenFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        LocalDate givenDateObject = LocalDate.parse(givenDate, givenFormatter);
+
+
+        return givenDateObject.format(formatter);
+    }
 
     public static int pick(int[] array, int index) {
         return array[index];
@@ -25,7 +114,7 @@ public class Main {
         return array[index];
     }
 
-    public static <T> int findGeneric(T[] array ,T element) {
+    public static <T> int findGeneric(T[] array, T element) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(element)) {
                 return i;
@@ -34,7 +123,7 @@ public class Main {
         return -1;
     }
 
-    public static <T> Optional<T> findElement(T[] array , T element) {
+    public static <T> Optional<T> findElement(T[] array, T element) {
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(element)) {
                 return Optional.of(array[i]);
