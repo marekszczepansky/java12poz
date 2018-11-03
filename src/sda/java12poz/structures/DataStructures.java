@@ -1,3 +1,5 @@
+package sda.java12poz.structures;
+
 import java.util.Random;
 
 public class DataStructures {
@@ -58,7 +60,6 @@ public class DataStructures {
         }
         return result;
     }
-
 }
 
 

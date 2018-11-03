@@ -1,6 +1,3 @@
-import sda.java12poz.entities.Person;
-import sda.java12poz.sort.Bubble;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -15,17 +12,25 @@ public class Main {
 
     public static void main(String[] args) {
 
+        QueueArray a1 = new QueueArray();
 
-        int[] sortedTab = {50};
-        Random generator = new Random();
-
-        sortedTab = DataStructures.sortedInsert(sortedTab, generator.nextInt(100));
-        sortedTab = DataStructures.sortedInsert(sortedTab, generator.nextInt(100));
-        sortedTab = DataStructures.sortedInsert(sortedTab, generator.nextInt(100));
-        sortedTab = DataStructures.sortedInsert(sortedTab, generator.nextInt(100));
-
-        System.out.println(Arrays.toString(sortedTab));
+        a1.push(1);
+        System.out.println(a1);
+        a1.push(4);
+        System.out.println(a1);
+        a1.push(2);
+        System.out.println(a1);
+        a1.pop();
+        System.out.println(a1);
+        a1.pop();
+        System.out.println(a1);
+        a1.push(0);
+        System.out.println(a1);
     }
+
+
+
+
 
     public static <T extends Comparable<T>> T[] quickSort(T[] array) {
         return quickSort(array, 0, array.length - 1);
