@@ -1,3 +1,5 @@
+package sda.java12poz.sort;
+
 import java.util.Comparator;
 
 public interface Sorting<T extends Comparable> {

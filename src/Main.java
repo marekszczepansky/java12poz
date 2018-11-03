@@ -1,23 +1,27 @@
+import sda.java12poz.entities.Person;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Optional;
+import java.util.*;
 
 public class Main {
 
     private static Integer[] test = {1, 11, 2, 22, 99, 9, 88, 8};
     private static int[] test1 = {1, 11, 2, 22, 99, 9, 88, 8};
     private static String[] test2 = {"Ala", "ma", "kota"};
+    private static List<String> lista = new LinkedList<>();
 
     public static final Comparator<String> STRING_LENGTH_COMPARATOR = (o1, o2) -> o1.length() - o2.length();
 
     public static void main(String[] args) {
 
-        bubbleSort(test2, STRING_LENGTH_COMPARATOR);
-        quickSort(test);
-        System.out.println(Arrays.toString(test1));
-        System.out.println(Arrays.toString(test2));
+//        bubbleSort(test2, STRING_LENGTH_COMPARATOR);
+//        quickSort(test);
+        
+        Person[] persons = Person.exampleArray(6);
+        quickSort(persons);
+        System.out.println(Arrays.toString(persons));
+//        System.out.println(Arrays.toString(test2));
     }
 
     public static <T extends Comparable> T[] quickSort(T[] array) {
