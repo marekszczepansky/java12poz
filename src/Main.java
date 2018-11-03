@@ -9,7 +9,6 @@ public class Main {
     private static Integer[] test = {1, 11, 2, 22, 99, 9, 88, 8};
     private static int[] test1 = {1, 11, 2, 22, 99, 9, 88, 8};
     private static String[] test2 = {"Ala", "ma", "kota"};
-    private static List<String> lista = new LinkedList<>();
 
     public static final Comparator<String> STRING_LENGTH_COMPARATOR = (o1, o2) -> o1.length() - o2.length();
 
@@ -17,18 +16,18 @@ public class Main {
 
 //        bubbleSort(test2, STRING_LENGTH_COMPARATOR);
 //        quickSort(test);
-        
+
         Person[] persons = Person.exampleArray(6);
         quickSort(persons);
         System.out.println(Arrays.toString(persons));
 //        System.out.println(Arrays.toString(test2));
     }
 
-    public static <T extends Comparable> T[] quickSort(T[] array) {
+    public static <T extends Comparable<T>> T[] quickSort(T[] array) {
         return quickSort(array, 0, array.length - 1);
     }
 
-    private static <T extends Comparable> T[] quickSort(T[] array, int left, int right) {
+    private static <T extends Comparable<T>> T[] quickSort(T[] array, int left, int right) {
         int i, j;
         T pivot, temp;
 
@@ -50,7 +49,7 @@ public class Main {
         return array;
     }
 
-    public static <T extends Comparable> T[] insertionSort(T[] input) {
+    public static <T extends Comparable<T>> T[] insertionSort(T[] input) {
 
         T x;
         int i, j = input.length - 2;
@@ -69,7 +68,7 @@ public class Main {
     }
 
 
-    public static <T extends Comparable> void bubbleSort(T[] x) {
+    public static <T extends Comparable<T>> void bubbleSort(T[] x) {
         int n = x.length;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
@@ -83,7 +82,7 @@ public class Main {
     }
 
 
-    public static <T extends Comparable> void bubbleSort(T[] x, Comparator<T> comparator) {
+    public static <T extends Comparable<T>> void bubbleSort(T[] x, Comparator<T> comparator) {
         int n = x.length;
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
