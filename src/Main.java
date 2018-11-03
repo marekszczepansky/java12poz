@@ -1,4 +1,5 @@
 import sda.java12poz.entities.Person;
+import sda.java12poz.sort.Bubble;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -14,13 +15,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-//        bubbleSort(test2, STRING_LENGTH_COMPARATOR);
-//        quickSort(test);
 
-        Person[] persons = Person.exampleArray(6);
-        quickSort(persons);
+        Person[] persons = Person.exampleArray(3);
+
+        bubbleSort(persons, ((o1, o2) -> o1.getName().compareTo(o2.getName())));
         System.out.println(Arrays.toString(persons));
-//        System.out.println(Arrays.toString(test2));
+
+        bubbleSort(persons, ((o1, o2) -> o1.getLastName().compareTo(o2.getLastName())));
+        System.out.println(Arrays.toString(persons));
+
+        bubbleSort(persons, ((o1, o2) -> o1.getBirthDate().compareTo(o2.getBirthDate())));
+        System.out.println(Arrays.toString(persons));
     }
 
     public static <T extends Comparable<T>> T[] quickSort(T[] array) {
@@ -132,9 +137,9 @@ public class Main {
     }
 
     public static <T> Optional<T> findElement(T[] array, T element) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].equals(element)) {
-                return Optional.of(array[i]);
+        for (T anArray : array) {
+            if (anArray.equals(element)) {
+                return Optional.of(anArray);
             }
         }
         return Optional.empty();
@@ -159,7 +164,7 @@ public class Main {
     }
 
 
-/**
+/***
  *
  * prime (n)
  *

@@ -32,18 +32,20 @@ public class Person implements Comparable<Person> {
 
     @Override
     public int compareTo(Person o) {
-        return (name + lastName).compareTo(o.name + o.lastName);
+        String localValue = lastName + name;
+        String anotherValue = o.lastName + o.name;
+        return localValue.compareTo(anotherValue);
     }
 
     public static Person[] exampleArray(int size) {
         Person[] persons = new Person[size];
         for (int i = 0; i < size; i++) {
-            persons[i] = examlePerson();
+            persons[i] = examplePerson();
         }
         return persons;
     }
 
-    public static Person examlePerson() {
+    public static Person examplePerson() {
         return new Person(
                 NAMES[(int) (Math.random() * NAMES.length)],
                 LAST_NAMES[(int) (Math.random() * LAST_NAMES.length)],

@@ -23,6 +23,4 @@ public class Bubble<T extends Comparable> implements Sorting<T> {
         }
         return array;
     }
-
-
 }
