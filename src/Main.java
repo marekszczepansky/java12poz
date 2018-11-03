@@ -18,13 +18,19 @@ public class Main {
 
         Person[] persons = Person.exampleArray(3);
 
-        bubbleSort(persons, ((o1, o2) -> o1.getName().compareTo(o2.getName())));
+        bubbleSort(persons, ((o1, o2) -> {
+            return o1.getName().compareTo(o2.getName());
+        }));
         System.out.println(Arrays.toString(persons));
 
-        bubbleSort(persons, ((o1, o2) -> o1.getLastName().compareTo(o2.getLastName())));
+        bubbleSort(persons, ((o1, o2) -> {
+            return o1.getLastName().compareTo(o2.getLastName());
+        }));
         System.out.println(Arrays.toString(persons));
 
-        bubbleSort(persons, ((o1, o2) -> o1.getBirthDate().compareTo(o2.getBirthDate())));
+        bubbleSort(persons, ((o1, o2) -> {
+            return o1.getBirthDate().compareTo(o2.getBirthDate());
+        }));
         System.out.println(Arrays.toString(persons));
     }
 
