@@ -16,22 +16,15 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Person[] persons = Person.exampleArray(3);
+        int[] sortedTab = {50};
+        Random generator = new Random();
 
-        bubbleSort(persons, ((o1, o2) -> {
-            return o1.getName().compareTo(o2.getName());
-        }));
-        System.out.println(Arrays.toString(persons));
+        sortedTab = DataStructures.sortedInsert(sortedTab, generator.nextInt(100));
+        sortedTab = DataStructures.sortedInsert(sortedTab, generator.nextInt(100));
+        sortedTab = DataStructures.sortedInsert(sortedTab, generator.nextInt(100));
+        sortedTab = DataStructures.sortedInsert(sortedTab, generator.nextInt(100));
 
-        bubbleSort(persons, ((o1, o2) -> {
-            return o1.getLastName().compareTo(o2.getLastName());
-        }));
-        System.out.println(Arrays.toString(persons));
-
-        bubbleSort(persons, ((o1, o2) -> {
-            return o1.getBirthDate().compareTo(o2.getBirthDate());
-        }));
-        System.out.println(Arrays.toString(persons));
+        System.out.println(Arrays.toString(sortedTab));
     }
 
     public static <T extends Comparable<T>> T[] quickSort(T[] array) {
