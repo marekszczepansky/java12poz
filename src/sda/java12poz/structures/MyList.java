@@ -1,12 +1,12 @@
 package sda.java12poz.structures;
 
-public class MyList {
-    public Element head = null;
-    public Element tail = null;
+public class MyList<T> {
+    public Element<T> head = null;
+    public Element<T> tail = null;
     public int count = 0;
 
     public void printElementsRev() {
-        Element p = tail;
+        Element<T> p = tail;
         while (p != null) {
             System.out.println(p.data);
             p = p.prev;
@@ -14,17 +14,39 @@ public class MyList {
     }
 
     public void printElements() {
-        Element p = head;
+        Element<T> p = head;
         while (p != null) {
             System.out.println(p.data);
             p = p.next;
         }
     }
 
-    public MyList insert(String text) {
-        Element p = new Element();
+    public MyList<T> insert(T text) {
+        Element<T> p = new Element<>();
         p.data = text;
 
+        p.next = head;
+        head = p;
+        count++;
+        if (p.next != null) {
+            p.next.prev = p;
+        } else {
+            tail = p;
+        }
+        return this;
+    }
+
+    public MyList<T> append(T text) {
+        Element<T> p = new Element<>();
+        p.data = text;
+
+        p.prev = tail;
+        tail = p;
+        count++;
+        if (p.prev != null)
+            p.prev.next = p;
+        else
+            head = p;
 
         return this;
     }
