@@ -68,12 +68,13 @@ public class BinaryTreeElement {
         return stringBuilder.toString();
     }
 
-    public String toFormatedJSON(){
+    public String toFormattedJSON(){
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("JavaScript");
         try {
             engine.eval("function toJSON(obj){ return JSON.stringify(JSON.parse(obj),null,4) };");
             Invocable scriptFunction = (Invocable) engine;
-            return scriptFunction.invokeFunction("toJSON", toSimpleJSON()).toString().replaceAll("\"", "");
+            String formattedJSON = scriptFunction.invokeFunction("toJSON", toSimpleJSON()).toString();
+            return formattedJSON.replaceAll("\"", "");
         } catch (ScriptException | NoSuchMethodException e) {
             return "";
         }

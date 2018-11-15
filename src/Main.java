@@ -1,10 +1,6 @@
 import sda.java12poz.structures.BinaryTreeElement;
 
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-import java.util.*;
+import java.util.Stack;
 
 public class Main {
 
@@ -40,6 +36,6 @@ public class Main {
 
         BinaryTreeElement treeExample = BinaryTreeElement.exampleTree();
         System.out.println(treeExample);
-        System.out.println(treeExample.toFormatedJSON());
+        System.out.println(treeExample.toFormattedJSON());
     }
 }
