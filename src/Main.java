@@ -1,4 +1,10 @@
-import java.util.Stack;
+import sda.java12poz.structures.BinaryTreeElement;
+
+import javax.script.Invocable;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+import java.util.*;
 
 public class Main {
 
@@ -20,8 +26,7 @@ public class Main {
         return result;
     }
 
-    public static void main(String[] args) {
-
+    private void convertBaseExample() {
         System.out.println(convertBase(13, 2));
         System.out.println(convertBase(12, 8));
 
@@ -29,5 +34,12 @@ public class Main {
         System.out.println(convertBase(066, 8));
         System.out.println(convertBase(126, 16));
 
+    }
+
+    public static void main(String[] args) {
+
+        BinaryTreeElement treeExample = BinaryTreeElement.exampleTree();
+        System.out.println(treeExample);
+        System.out.println(treeExample.toFormatedJSON());
     }
 }

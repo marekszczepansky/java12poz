@@ -1,12 +1,12 @@
 package sda.java12poz.structures;
 
 public class MyList<T> {
-    public Element<T> head = null;
-    public Element<T> tail = null;
+    public ListElement<T> head = null;
+    public ListElement<T> tail = null;
     public int count = 0;
 
     public void printElementsRev() {
-        Element<T> p = tail;
+        ListElement<T> p = tail;
         while (p != null) {
             System.out.println(p.data);
             p = p.prev;
@@ -14,7 +14,7 @@ public class MyList<T> {
     }
 
     public void printElements() {
-        Element<T> p = head;
+        ListElement<T> p = head;
         while (p != null) {
             System.out.println(p.data);
             p = p.next;
@@ -22,7 +22,7 @@ public class MyList<T> {
     }
 
     public MyList<T> insert(T object) {
-        Element<T> p = new Element<>();
+        ListElement<T> p = new ListElement<>();
         p.data = object;
 
         p.next = head;
@@ -37,7 +37,7 @@ public class MyList<T> {
     }
 
     public MyList<T> append(T object) {
-        Element<T> p = new Element<>();
+        ListElement<T> p = new ListElement<>();
         p.data = object;
 
         p.prev = tail;
@@ -51,8 +51,8 @@ public class MyList<T> {
         return this;
     }
 
-    public MyList<T> insertBefore(Element<T> nextElement, T object) {
-        Element<T> p = new Element<>();
+    public MyList<T> insertBefore(ListElement<T> nextElement, T object) {
+        ListElement<T> p = new ListElement<>();
         p.data = object;
 
         p.prev = nextElement.prev;
@@ -67,8 +67,8 @@ public class MyList<T> {
         return this;
     }
 
-    public MyList<T> insertAfter(Element<T> prevElement, T object) {
-        Element<T> p = new Element<>();
+    public MyList<T> insertAfter(ListElement<T> prevElement, T object) {
+        ListElement<T> p = new ListElement<>();
         p.data = object;
 
         p.prev = prevElement;
@@ -84,7 +84,7 @@ public class MyList<T> {
         return this;
     }
 
-    public MyList<T> delete(Element<T> e) {
+    public MyList<T> delete(ListElement<T> e) {
         count--;
         if (e.prev != null){
             e.prev.next = e.next;
@@ -102,7 +102,7 @@ public class MyList<T> {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        Element p = head;
+        ListElement p = head;
 
         while (p != null) {
             result.append(p.data);
