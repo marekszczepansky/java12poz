@@ -45,6 +45,20 @@ public class BinaryTreeElement {
         return root;
     }
 
+    public int heightOfTree() {
+        /**
+         *  jeżeli leftElement != null
+         *      leftHeight = leftElement.heightOfTree();
+         *  jeżeli rightElement != null
+         * 	    rightHeight = rightElement.heightOfTree();
+         * 	return max(leftHeight , rightHeight) + 1
+         */
+        int leftHeight = (leftElement == null) ? 0 : leftElement.heightOfTree();
+        int rightHeight = (rightElement == null) ? 0 : rightElement.heightOfTree();
+
+        return Integer.max(leftHeight, rightHeight);
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
