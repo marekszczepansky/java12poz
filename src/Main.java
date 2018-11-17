@@ -1,5 +1,4 @@
-
-import sda.java12poz.BinaryTreeElement;
+import sda.java12poz.structures.BinaryTreeElement;
 
 import java.util.Stack;
 
@@ -34,8 +33,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
-
         BinaryTreeElement root = BinaryTreeElement.exampleTree();
-        System.out.println(root);
+        System.out.println(root.getPreOrderedList());
+        System.out.println(root.toFormattedJSON());
     }
 }

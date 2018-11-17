@@ -56,7 +56,41 @@ public class BinaryTreeElement {
         int leftHeight = (leftElement == null) ? 0 : leftElement.heightOfTree();
         int rightHeight = (rightElement == null) ? 0 : rightElement.heightOfTree();
 
-        return Integer.max(leftHeight, rightHeight);
+        return Integer.max(leftHeight, rightHeight) + 1;
+    }
+
+    public void printPreOrdered(){
+        /**
+         * 	wypisz wierzchołek_v.wartość
+         * 	jeżeli wierzchołek_v.lewy_syn != null to
+         * 		PRE-ORDER(wierzchołek_v.lewy_syn)
+         * 	jeżeli wierzchołek_v.prawy_syn != null to
+         * 		PRE-ORDER(wierzchołek_v.prawy_syn)
+         * }
+         */
+
+        System.out.print(data + " ");
+
+        if (leftElement != null) {
+            leftElement.printPreOrdered();
+        }
+        if (rightElement != null) {
+            rightElement.printPreOrdered();
+        }
+    }
+
+    public MyList<Integer> getPreOrderedList(){
+        MyList<Integer> preOrderedList = new MyList<>();
+
+        this.addToPreOrderedList(preOrderedList);
+
+        return preOrderedList;
+    }
+
+    private void addToPreOrderedList(MyList<Integer> preOrderedList) {
+        preOrderedList.append(data);
+        if (leftElement != null) leftElement.addToPreOrderedList(preOrderedList);
+        if (rightElement != null) rightElement.addToPreOrderedList(preOrderedList);
     }
 
     @Override
