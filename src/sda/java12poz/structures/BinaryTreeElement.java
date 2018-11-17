@@ -81,9 +81,7 @@ public class BinaryTreeElement {
 
     public MyList<Integer> getPreOrderedList(){
         MyList<Integer> preOrderedList = new MyList<>();
-
         this.addToPreOrderedList(preOrderedList);
-
         return preOrderedList;
     }
 
@@ -91,6 +89,30 @@ public class BinaryTreeElement {
         preOrderedList.append(data);
         if (leftElement != null) leftElement.addToPreOrderedList(preOrderedList);
         if (rightElement != null) rightElement.addToPreOrderedList(preOrderedList);
+    }
+
+    public MyList<Integer> getInOrderedList(){
+        MyList<Integer> inOrderedList = new MyList<>();
+        this.addToInOrderedList(inOrderedList);
+        return inOrderedList;
+    }
+
+    private void addToInOrderedList(MyList<Integer> inOrderedList) {
+        if (leftElement != null) leftElement.addToInOrderedList(inOrderedList);
+        inOrderedList.append(data);
+        if (rightElement != null) rightElement.addToInOrderedList(inOrderedList);
+    }
+
+    public MyList<Integer> getPostOrderedList(){
+        MyList<Integer> postOrderedList = new MyList<>();
+        this.addToPostOrderedList(postOrderedList);
+        return postOrderedList;
+    }
+
+    private void addToPostOrderedList(MyList<Integer> postOrderedList) {
+        if (leftElement != null) leftElement.addToPostOrderedList(postOrderedList);
+        if (rightElement != null) rightElement.addToPostOrderedList(postOrderedList);
+        postOrderedList.append(data);
     }
 
     @Override
