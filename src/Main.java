@@ -22,7 +22,7 @@ public class Main {
         return result;
     }
 
-    private void convertBaseExample() {
+    public static void convertBaseExample() {
         System.out.println(convertBase(13, 2));
         System.out.println(convertBase(12, 8));
 
@@ -32,11 +32,32 @@ public class Main {
 
     }
 
+    public static int binarySearch(int[] array, int value) {
+
+        int left = 0;
+        int right = array.length - 1;
+        int middle;
+
+        while (left <= right) {
+            System.out.print(".");
+            middle = (left + right) / 2;
+            if (array[middle] < value) left = middle + 1;
+            else if (array[middle] > value) right = middle -1;
+            else return middle;
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
-        BinaryTreeElement root = BinaryTreeElement.exampleTree();
-        System.out.println(root.getPreOrderedList());
-        System.out.println(root.getInOrderedList());
-        System.out.println(root.getPostOrderedList());
-        System.out.println(root.toFormattedJSON());
+
+        int[] example = {1,4,7,12,13,14,15,21,23,44,55,66,77,88,99,100};
+
+        System.out.println("");
+        System.out.println(binarySearch(example, 1));
+        System.out.println(binarySearch(example, 77));
+        System.out.println(binarySearch(example, 13));
+        System.out.println(binarySearch(example, 100));
+        System.out.println(binarySearch(example, 0));
+
     }
 }
